@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<table>
+    <tr>
+      <th>
+          Application Name
+      </th><th>
+          Every
+      </th><th>
+          Last Update
+      </th><th cols="3">
+          Actions
+      </th>
+    </tr>
+    {% for update in updates %}
+   
+    <tr>
+        
+        <td>{{update.getApplicationName()}}</td>      
+        <td>{{update.getEvery()}}</td>
+          
+        <td>{{update.getLastUpdate()}}</td>
+            <td><a href="/updates/{{update.getId()}}/update">Update</a></td>
+            <td><a href="/updates/{{update.getId()}}/edit">Edit</a></td>
+            <td><a href="/updates/{{update.getId()}}/delete">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    <tr>
+      <td cols="6">
+        <a href="/updates/add">Add Updates</a>
+      </td>
+    </tr>
+</table>    
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{% set pageTitle="User details" %}
+{% extends "layout.html" %}
+{% block head %}
+    {{parent()}}
+    <link rel="stylesheet" href="user.css" />
+{% endblock %}
+{% block content %}
+<h1>User {{user.name}}</h1>
+<ul>
+    <li>Email: {{user.email}}</li>
+    <li>Registered: {{user.created_at}}</li>
+</ul>
+{% endblock %}
+
