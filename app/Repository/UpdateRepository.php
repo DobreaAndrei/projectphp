@@ -5,6 +5,8 @@ namespace App\Repository;
 use Framework\Db;
 use App\Models\Update;
 
+use \Datetime;
+
 
 class UpdateRepository{
 
@@ -61,13 +63,15 @@ class UpdateRepository{
         }
     }
 
-    public function update($update){
+    public function update($updateId){
         
         try {
+           
+            $update =$this->getUpdateById($updateId);
 
-            $req = $this->db->prepare('UPDATE updates set status = 1 WHERE id=:id');
-            $req->bindParam(':id', $update->getId());
-            $req->bindParam(':last_update', $update->getLastUpdate());
+            $req = $this->db->prepare('UPDATE updates set last_update = :last_update WHERE id=:id');
+            $req->bindParam(':id', $updateId);
+            $req->bindParam(':last_update', (new DateTime())->modify("+".$update->getEvery()."days")->format("Y-m-d"));
 
             $req->execute();
         } catch (PDOException $e) {

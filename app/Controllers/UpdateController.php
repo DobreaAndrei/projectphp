@@ -36,8 +36,9 @@ class UpdateController extends Controller
         header('Location: /');
     }
 
-    private function doUpdate($update) {
-        $this->updateRepository->update($update);
+    public function doUpdate() {
+        $this->updateRepository->update($this->params[0]);
+        header('Location: /');
     }
  
     private function createPage(){

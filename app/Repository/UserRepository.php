@@ -31,11 +31,8 @@ class UserRepository{
 
     public function getUserById($userId){
 
-        // we make sure $id is an integer
-        $id = intval($userId);
-
-        $req = $this->db->prepare('SELECT * FROM users WHERE id = :id');
-        $req->execute(array('id' => $id));
+         $req = $this->db->prepare('SELECT * FROM users WHERE id = :id');
+        $req->execute(array('id' => $userId));
         $res = $req->fetch();
 
         $user = User::getModel($res);
