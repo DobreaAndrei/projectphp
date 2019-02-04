@@ -11,5 +11,7 @@ $routes = [
     '/updates' => ['controller' => 'UpdateController', 'action' => 'updatesPage'],
     '/updates/{id}/edit' => ['controller' => 'UpdateController', 'action' => 'editPage'],
     '/updates/add' => ['controller' => 'UpdateController', 'action' => 'createPage'],
+    '/updates/{id}/delete' => ['controller' => 'UpdateController', 'action' => 'createPage'],
+    '/updates/{id}/add' => ['controller' => 'UpdateController', 'action' => 'createPage'],
     '/' =>['controller' => 'PageController', 'action' => 'home']
 ];

@@ -45,7 +45,8 @@ class UpdateController extends Controller
     }
 
     private function editPage(){
-        return $this->view("update/edit.html");
+        $update= $this->getUpdatesByUserId($editUpdateId);
+        return $this->view("update/edit.html",['update' => $update]);
     }
 
     private function createUpdate(){
