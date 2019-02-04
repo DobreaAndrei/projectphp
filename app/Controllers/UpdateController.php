@@ -20,8 +20,8 @@ class UpdateController extends Controller
 
     private $editUpdateId;
 
-    public function __construct(){
-        parent::__construct();
+    public function __construct($params){
+        parent::__construct($params);
         $this->updateRepository = new UpdateRepository();
     }
 
@@ -44,9 +44,11 @@ class UpdateController extends Controller
         return $this->view("updates/add.html");
     }
 
-    private function editPage(){
-        $update= $this->getUpdatesByUserId($editUpdateId);
-        return $this->view("update/edit.html",['update' => $update]);
+    public function editPage(){
+        $editUpdateId= $this->params[0];
+        if($editUpdateId)
+        $update= $this->updateRepository->getUpdateById($editUpdateId);
+        return $this->view("updates/edit.html",['update' => $update]);
     }
 
     private function createUpdate(){

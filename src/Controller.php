@@ -5,9 +5,12 @@ namespace Framework;
 class Controller
 {
    private $twig;
+   protected $params =[];
 
-   public function __construct()
+
+   public function __construct($params)
    {
+       $this->params = $params;
        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../app/Views');
        $twigEnvParams = $this->prepareTwigEnvironmentParams();
        $this->twig = new \Twig_Environment($loader, $twigEnvParams);

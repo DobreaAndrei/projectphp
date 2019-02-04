@@ -81,7 +81,7 @@ class UpdateRepository{
         // we make sure $id is an integer
         $id = intval($userId);
 
-        $req = $this->db->prepare('SELECT * FROM updates WHERE user_id = :user_id');
+        $req = $this->db->prepare('SELECT * FROM updates WHERE user_id = :user_id and status= 0');
         $req->execute(array('user_id' => $userId));
         $resp = $req->fetchAll();
         $updates =[];
@@ -91,6 +91,19 @@ class UpdateRepository{
         return $updates;
     }
 
+    public function getUpdateById($updateId){
+
+        $id = intval($updateId);
+
+        $req = $this->db->prepare('SELECT * FROM updates WHERE id = :id');
+        $req->execute(array('id' => $id));
+        $res = $req->fetch();
+    
+        if($res)
+        $update = Update::getModel($res);
+
+        return $update;
+    }
     
 
 }

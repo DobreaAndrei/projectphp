@@ -14,8 +14,8 @@ class LoginController extends Controller
     
     private $userRepostory;
 
-    public function __construct(){
-        parent::__construct();
+    public function __construct($params){
+        parent::__construct($params);
         $this->userRepository = new UserRepository();
     }
 
